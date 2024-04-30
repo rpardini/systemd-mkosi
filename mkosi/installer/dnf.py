@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1+
+import logging
 import os
 import textwrap
 from collections.abc import Iterable, Sequence
@@ -91,6 +92,7 @@ class Dnf(PackageManager):
                         f.write(f"{url}\n")
 
                     f.write("\n")
+            logging.warning(f"Created {repofile} with contents:\n{repofile.read_text()}")
 
     @classmethod
     def cmd(cls, context: Context) -> list[PathString]:
